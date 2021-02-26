@@ -1,9 +1,6 @@
 extends KinematicBody2D
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 # stats
 var score : int = 0
  
@@ -22,18 +19,17 @@ onready var sprite = $Sprite
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
 
 func _physics_process (delta):
 	# reset horizontal velocity
 	vel.x = 0
-	 
 	# movement inputs
 	if Input.is_action_pressed("move_left"):
 		vel.x -= speed
 	if Input.is_action_pressed("move_right"):
 		vel.x += speed
-		
+
 	# applying the velocity
 	vel = move_and_slide(vel, Vector2.UP)
 	
@@ -49,6 +45,7 @@ func _physics_process (delta):
 		sprite.flip_h = true
 	elif vel.x > 0:
 		sprite.flip_h = false
+	
 
 
 
