@@ -1,13 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Sprites/Adventurer Sprite Sheet v1.1.png" type="Texture" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
 
-[sub_resource type="CapsuleShape2D" id=5]
-radius = 6.58239
-height = 8.54874
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 6.43147
+height = 6.07288
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=2]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -17,13 +17,13 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=3]
 resource_name = "run_left"
 loop = true
 tracks/0/type = "value"
@@ -39,6 +39,22 @@ tracks/0/keys = {
 "values": [ 116, 117, 120, 121, 118, 123, 124, 119 ]
 }
 
+[sub_resource type="Animation" id=4]
+resource_name = "run_right"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 13, 14, 15, 16, 17, 18, 19, 20 ]
+}
+
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
@@ -46,13 +62,22 @@ script = ExtResource( 2 )
 texture = ExtResource( 1 )
 vframes = 16
 hframes = 13
-frame = 4
+frame = 13
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1.88503, 4.96063 )
-shape = SubResource( 5 )
+position = Vector2( 0.396853, 5.25826 )
+shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
-anims/idle = SubResource( 6 )
-anims/run_left = SubResource( 7 )
+anims/idle = SubResource( 2 )
+anims/run_left = SubResource( 3 )
+anims/run_right = SubResource( 4 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+drag_margin_top = 0.8
+drag_margin_bottom = 0.8
