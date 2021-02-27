@@ -40,11 +40,10 @@ func _physics_process (delta):
 	 
 	# jump input
 	if Input.is_action_just_pressed("jump"):
-		$AnimationPlayer.play("jump")
+		
 		if is_on_floor():
 			vel.y -= jumpForce
 			jump_count = 0
-			
 			
 		elif !is_on_floor() and jump_count < max_jumps:
 			vel.y -= jumpForce
@@ -52,13 +51,13 @@ func _physics_process (delta):
 
 	# sprite direction
 	if vel.x < 0:
-		$AnimationPlayer.play("run_right")
+		$AnimationPlayer.play("wizard_run")
 		sprite.flip_h = true
 	elif vel.x > 0:
 		sprite.flip_h = false
-		$AnimationPlayer.play("run_right")
+		$AnimationPlayer.play("wizard_run")
 	elif vel.x == 0:
-		$AnimationPlayer.play("idle")
+		$AnimationPlayer.play("wizard_idle")
 	
 	
 	
