@@ -3,6 +3,7 @@ extends KinematicBody2D
 
 # stats
 var score : int = 0
+var health : int = 3
  
 # physics
 var speed : int = 200
